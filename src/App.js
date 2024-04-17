@@ -4,21 +4,32 @@ import Login from './components/Login'
 import Home from './components/Home'
 import Context from './context/Context'
 import './App.css'
-
+import Trending from './components/Trending'
+import ProtectedRoute from './components/ProtectedRoute'
 // Replace your code here
 
 class App extends Component {
-  state = {theme: false}
+  state = {theme: false, activeRoute: 'HOME'}
 
   changeTheme = () => this.setState(prevState => ({theme: !prevState.theme}))
 
+  changeActiveRoute = id => this.setState({activeRoute: id})
+
   render() {
-    const {theme} = this.state
+    const {theme, activeRoute} = this.state
     return (
-      <Context.Provider value={{theme, changeTheme: this.changeTheme}}>
+      <Context.Provider
+        value={{
+          theme,
+          changeTheme: this.changeTheme,
+          activeRoute,
+          changeActiveRoute: this.changeActiveRoute,
+        }}
+      >
         <Switch>
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Home} />
+          <ProtectedRoute exact path="/" component={Home} />
+          <ProtectedRoute exact path="/trending" component={Trending} />
         </Switch>
       </Context.Provider>
     )

@@ -1,12 +1,12 @@
 import Headers from '../Headers'
 import NavBar from '../NavBar'
 
-const Home = () => (
+const Trending = () => (
   <>
     <Headers />
     <NavBar />
-    <h1>Home</h1>
+    <h1>Trending</h1>
   </>
 )
 
-export default Home
+export default Trending

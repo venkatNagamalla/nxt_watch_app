@@ -66,13 +66,8 @@ const Login = props => {
       {value => {
         const {theme} = value
 
-        console.log(theme)
-
         const bgColor = theme ? '#000000' : '#ffffff'
         const color = theme ? '#ffffff' : '#000000'
-
-        console.log(bgColor)
-        console.log(color)
 
         const renderUserName = () => (
           <InputContainer color={color}>
